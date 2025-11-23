@@ -1,0 +1,28 @@
+
+psql -U postgres -h localhost
+
+CREATE USER fims_user WITH PASSWORD 'StrongPassword@123';
+
+GRANT ALL PRIVILEGES ON DATABASE fims_directory TO fims_user;
+
+psql -U fims_user -d fims_directory -h localhost
+
+
+
+OU INFORMATION :
+Use the Script create_fims_ou_structure.ps1 to create organizations 
+
+PS C:\Users\Administrator\Desktop> .\create_fims_ou_structure.ps1                                                       
+Starting creation of FIMS Directory OU structure...                                                                     
+Created OU: FIMS_Directory                                                                                              
+Created OU: CorpAdmins                                                                                                  
+Created OU: LocAdmins                                                                                                   
+Created OU: LocationUsers                                                                                                                                                                                                                       
+============================================                                                                            
+FIMS Directory OU structure created successfully.                                                                       
+============================================                                                                                                                                                                                                    
+Hierarchy:                                                                                                              
+OU=FIMS_Directory,DC=adtest,DC=local                                                                                        
++-- OU=CorpAdmins                                                                                                       
++-- OU=LocAdmins
++-- OU=LocationUsers                                                                                                                                                                                                                        
