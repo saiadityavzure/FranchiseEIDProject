@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from fims_core.views.company_view import (
     CompanyListCreateView,
-    CompanyDetailView,
+    CompanyRetrieveUpdateView,
 )
 
 from fims_core.views.continent_views import (
@@ -13,6 +13,11 @@ from fims_core.views.continent_views import (
 from fims_core.views.country_views import (
     CountryListCreateView,
     CountryDetailView,
+)
+
+from fims_core.views.location_views import (
+    LocationListCreateView,
+    LocationRetrieveUpdateView
 )
 
 urlpatterns = [
@@ -25,7 +30,10 @@ urlpatterns = [
     path("countries/<int:pk>/", CountryDetailView.as_view(), name="country-detail"),
 
     # Companies
-    path("companies/", CompanyListCreateView.as_view(), name="companies-list-create"),
-    path("companies/<int:pk>/", CompanyDetailView.as_view(), name="companies-detail"),
+    path("companies/", CompanyListCreateView.as_view(), name="company-list-create"),
+    path("companies/<int:pk>/", CompanyRetrieveUpdateView.as_view(), name="company-detail-update"),
+
+    path("locations/", LocationListCreateView.as_view(), name="location-list-create"),
+    path("locations/<int:pk>/", LocationRetrieveUpdateView.as_view(), name="location-detail-update"),
 
 ]
