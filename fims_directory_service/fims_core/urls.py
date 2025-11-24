@@ -20,6 +20,21 @@ from fims_core.views.location_views import (
     LocationRetrieveUpdateView
 )
 
+from fims_core.views.corp_admin_views import (
+    CorpAdminListCreateView,
+    CorpAdminRetrieveUpdateView,
+)
+
+from fims_core.views.loc_admin_views import (
+    LocAdminListCreateView,
+    LocAdminRetrieveUpdateView,
+)
+
+from fims_core.views.location_user_views import (
+    LocationUserListCreateView,
+    LocationUserRetrieveUpdateView,
+)
+
 urlpatterns = [
     # Continents
     path("continents/", ContinentListCreateView.as_view(), name="continent-list"),
@@ -33,7 +48,20 @@ urlpatterns = [
     path("companies/", CompanyListCreateView.as_view(), name="company-list-create"),
     path("companies/<int:pk>/", CompanyRetrieveUpdateView.as_view(), name="company-detail-update"),
 
+    # Locations
     path("locations/", LocationListCreateView.as_view(), name="location-list-create"),
     path("locations/<int:pk>/", LocationRetrieveUpdateView.as_view(), name="location-detail-update"),
+
+    # CorpAdmins
+    path("corp-admins/", CorpAdminListCreateView.as_view(), name="corp-admin-list-create"),
+    path("corp-admins/<int:pk>/", CorpAdminRetrieveUpdateView.as_view(), name="corp-admin-detail-update"),
+
+    # LocAdmins
+    path("loc-admins/", LocAdminListCreateView.as_view(), name="loc_admin_list_create"),
+    path("loc-admins/<int:pk>/", LocAdminRetrieveUpdateView.as_view(), name="loc_admin_retrieve_update"),
+
+    # LocationUsers
+    path("location-users/", LocationUserListCreateView.as_view(), name="location_user_list_create"),
+    path( "location-users/<int:pk>/", LocationUserRetrieveUpdateView.as_view(), name="location_user_retrieve_update"),
 
 ]
