@@ -2,22 +2,13 @@ from fims_core.ad.ldap_client import ADClient
 from fims_core.models import IdentityRegistry
 
 
-def sync_employee_to_ad(instance, employee_type: str):
+def sync_employee_to_ad(instance, employee_type: str, ident: IdentityRegistry):
     """
     Creates the AD user for CorpAdmin, LocAdmin, or LocationUser.
     Stores DN + GUID + AD Status in IdentityRegistry.
     """
 
-    # Get identity record
-    ident = IdentityRegistry.objects.filter(
-        employee_type=employee_type,
-        employee_ref_id=instance.id,
-    ).first()
-
-    if not ident:
-        return  # Identity not created? should never happen.
-
-    # Prevent re-creating users that already exist
+    # If AD already created, skip
     if ident.ad_dn:
         return
 

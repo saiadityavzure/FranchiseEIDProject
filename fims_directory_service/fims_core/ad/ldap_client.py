@@ -1,4 +1,4 @@
-from ldap3 import Server, Connection, ALL, NTLM, MODIFY_REPLACE
+from ldap3 import Server, Connection, ALL, NTLM, MODIFY_REPLACE, SIMPLE
 
 class ADClient:
     DOMAIN = "adtest.local"
@@ -25,7 +25,7 @@ class ADClient:
             self.server,
             user=self.user_dn,
             password=self.password,
-            authentication=NTLM,
+            authentication=SIMPLE,
             auto_bind=True,
         )
         return self.conn.bound

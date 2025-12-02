@@ -17,7 +17,7 @@ def handle_corp_admin(sender, instance, created, **kwargs):
         ident = create_identity_for_employee(
             instance, IdentityRegistry.EmployeeType.CORP_ADMIN
         )
-        sync_employee_to_ad(instance, IdentityRegistry.EmployeeType.CORP_ADMIN)
+        sync_employee_to_ad(instance, IdentityRegistry.EmployeeType.CORP_ADMIN, ident)
 
 
 @receiver(post_save, sender=LocAdmin)
@@ -26,7 +26,7 @@ def handle_loc_admin(sender, instance, created, **kwargs):
         ident = create_identity_for_employee(
             instance, IdentityRegistry.EmployeeType.LOC_ADMIN
         )
-        sync_employee_to_ad(instance, IdentityRegistry.EmployeeType.LOC_ADMIN)
+        sync_employee_to_ad(instance, IdentityRegistry.EmployeeType.LOC_ADMIN, ident)
 
 
 @receiver(post_save, sender=LocationUser)
@@ -35,4 +35,4 @@ def handle_location_user(sender, instance, created, **kwargs):
         ident = create_identity_for_employee(
             instance, IdentityRegistry.EmployeeType.LOCATION_USER
         )
-        sync_employee_to_ad(instance, IdentityRegistry.EmployeeType.LOCATION_USER)
+        sync_employee_to_ad(instance, IdentityRegistry.EmployeeType.LOCATION_USER, ident)
