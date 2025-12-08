@@ -47,6 +47,7 @@ class LocationUserSerializer(BaseSerializer):
             "last_name",
             "email",
             "phone_number",
+            "uid_expiry_date",
 
             # FKs (read)
             "company",

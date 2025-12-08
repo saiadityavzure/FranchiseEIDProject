@@ -46,6 +46,7 @@ class LocAdminSerializer(BaseSerializer):
             "last_name",
             "email",
             "phone_number",
+            "uid_expiry_date",
 
             # FK (READ)
             "company",
